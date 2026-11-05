@@ -5,38 +5,55 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Sprint_7</artifactId>
+    <artifactId>java-api-testing-scooter</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>Java API Testing Scooter Service Project</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <aspectj.version>1.9.7</aspectj.version>
+
+        <!-- Versions of Core Dependencies -->
+        <junit.version>4.13.2</junit.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
+        <gson.version>2.11.0</gson.version>
+        <lombok.version>1.18.26</lombok.version>
+
+        <!-- Versions of Test Reporting Framework -->
         <allure.version>2.24.0</allure.version>
+        <aspectj.version>1.9.7</aspectj.version>
+
+        <!-- Versions of Maven Plugins -->
+        <maven.surefire.version>2.22.2</maven.surefire.version>
+        <allure-maven.version>2.12.0</allure-maven.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>5.5.0</version>
-            <scope>test</scope>
-        </dependency>
-
+        <!-- Test Framework -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
+        <!-- HTTP Client Framework -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JSON Serialization/Deserialization -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.11.0</version>
+            <version>${gson.version}</version>
         </dependency>
 
+        <!-- Allure Test Reporting Integrations -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
@@ -51,6 +68,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- AspectJ Weaver for Allure Steps Interception -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
@@ -58,21 +76,22 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Code Boilerplate Reduction -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
+            <!-- Test Runner Plugin Configured with AspectJ Weaver Agent -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>${maven.surefire.version}</version>
                 <configuration>
                     <testFailureIgnore>false</testFailureIgnore>
                     <argLine>
@@ -93,12 +112,13 @@
                 </configuration>
             </plugin>
 
+            <!-- Allure Lifecycle Maven Plugin -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
+                <version>${allure-maven.version}</version>
                 <configuration>
-                    <reportVersion>2.24.0</reportVersion>
+                    <reportVersion>${allure.version}</reportVersion>
                 </configuration>
             </plugin>
         </plugins>

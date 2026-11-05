@@ -1,5 +1,4 @@
 .idea/
-*.iml
 .allure/
 target/
 !.mvn/wrapper/maven-wrapper.jar
