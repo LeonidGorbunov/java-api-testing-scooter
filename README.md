@@ -1,3 +1,5 @@
+[![API Tests & Allure Report](https://github.com/LeonidGorbunov/java-api-testing-scooter/actions/workflows/tests.yml/badge.svg)](https://github.com/LeonidGorbunov/java-api-testing-scooter/actions/workflows/tests.yml)
+[![Allure Report](https://img.shields.io/badge/Allure%20Report-Live-brightgreen)](https://leonidgorbunov.github.io/java-api-testing-scooter/)
 # Java API Testing Scooter Service Project
 
 **Контекст и цели проекта**: проектирование масштабируемой и отказоустойчивой архитектуры фреймворка автоматизации API-тестов (REST Client Architecture) для верификации критических бизнес-цепочек бэкенда и контрактной валидации данных.
@@ -31,3 +33,8 @@
 #### 3. Обнаруженный дефект бэкенда (Defect Documentation: HTTP 404 vs 400)
 В ходе выполнения негативного сценария `acceptOrderWithoutOrderId` (принятие заказа без передачи ID заказа) был локализован дефект бизнес-логики: сервер возвращает статус-код `404 Not Found` вместо ожидаемого по ТЗ контракта `400 Bad Request`. Тест задокументирован как упавший (`Failed`) для демонстрации работы репортинга.
 ![Backend Bug HTTP 404](allure-bug-accept-order.png)
+
+### 📊 Живой отчёт Allure и запуск в CI/CD (GitHub Actions)
+
+* **Интерактивный отчёт последнего прогона:** [Открыть Allure Report на GitHub Pages](https://leonidgorbunov.github.io/java-api-testing-scooter/)
+* **Автоматический прогон в облаке:** в репозиторий интегрирован пайплайн [GitHub Actions](.github/workflows/tests.yml), который разворачивает окружение на базе JDK 11, выполняет `mvn clean test`, генерирует HTML-отчёт через `allure-maven` и публикует его в ветку `gh-pages`.
